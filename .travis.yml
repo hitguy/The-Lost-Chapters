@@ -1,7 +1,12 @@
-language: objective-c
-osx_image: xcode8.1
-rvm:
-- 2.2
+language: generic
+os: osx
+branches:
+  only:
+  - master
+notifications:
+  email:
+    on_success: never
+    on_failure: change
 before_install:
 - chmod a+x ./Scripts/install.sh
 - chmod a+x ./Scripts/build.sh
@@ -9,3 +14,7 @@ install:
 - ./Scripts/install.sh
 script:
 - ./Scripts/build.sh
+env:
+  global:
+  - UNITYCI_PROJECT_NAME=""
+  - UPLOAD_KEYPATH="./Scripts/upload"
